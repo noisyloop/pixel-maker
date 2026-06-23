@@ -75,6 +75,9 @@ export function deserializeProject(raw: unknown): DeserializedProject {
   if (!Array.isArray(obj.layers) || obj.layers.length === 0) {
     throw new Error('Project has no layers');
   }
+  if (obj.layers.length > 64) {
+    throw new Error('Project exceeds the 64-layer limit');
+  }
   const expectedLength = width * height * 4;
   const layers: Layer[] = (obj.layers as unknown[]).map((entry, index) => {
     if (typeof entry !== 'object' || entry === null) {
@@ -83,7 +86,7 @@ export function deserializeProject(raw: unknown): DeserializedProject {
     const le = entry as Record<string, unknown>;
     return {
       id: typeof le.id === 'string' ? le.id : `layer-${index}`,
-      name: typeof le.name === 'string' ? le.name : `Layer ${index + 1}`,
+      name: typeof le.name === 'string' ? le.name.slice(0, 64) : `Layer ${index + 1}`,
       visible: le.visible !== false,
       opacity:
         typeof le.opacity === 'number' ? Math.max(0, Math.min(1, le.opacity)) : 1,
@@ -91,7 +94,9 @@ export function deserializeProject(raw: unknown): DeserializedProject {
     };
   });
   const palette = Array.isArray(obj.palette)
-    ? (obj.palette as unknown[]).filter((c): c is string => typeof c === 'string')
+    ? (obj.palette as unknown[]).filter(
+        (c): c is string => typeof c === 'string' && /^#[0-9a-fA-F]{6}$/.test(c),
+      )
     : [];
   const activeLayerId =
     typeof obj.activeLayerId === 'string' &&

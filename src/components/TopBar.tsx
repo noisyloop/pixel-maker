@@ -38,6 +38,34 @@ export default function TopBar() {
       pushToast('error', 'Image exceeds the 2 MB size limit');
       return;
     }
+    // Verify the file's magic bytes match a real PNG/JPEG. This blocks renamed
+    // files (e.g. an SVG with a .png name) that the browser might otherwise
+    // treat as an image and that can carry executable content.
+    const headerReader = new FileReader();
+    headerReader.onerror = () => pushToast('error', 'Failed to read image file');
+    headerReader.onload = () => {
+      const bytes = new Uint8Array(headerReader.result as ArrayBuffer);
+      const isPng =
+        bytes.length >= 4 &&
+        bytes[0] === 0x89 &&
+        bytes[1] === 0x50 &&
+        bytes[2] === 0x4e &&
+        bytes[3] === 0x47;
+      const isJpeg =
+        bytes.length >= 3 &&
+        bytes[0] === 0xff &&
+        bytes[1] === 0xd8 &&
+        bytes[2] === 0xff;
+      if (!isPng && !isJpeg) {
+        pushToast('error', 'File does not appear to be a valid PNG or JPG');
+        return;
+      }
+      readImageData(file);
+    };
+    headerReader.readAsArrayBuffer(file.slice(0, 4));
+  };
+
+  const readImageData = (file: File) => {
     const reader = new FileReader();
     reader.onerror = () => pushToast('error', 'Failed to read image file');
     reader.onload = () => {
@@ -53,7 +81,7 @@ export default function TopBar() {
   };
 
   const handleProjectFile = (file: File) => {
-    if (file.size > 50 * 1024 * 1024) {
+    if (file.size > 10 * 1024 * 1024) {
       pushToast('error', 'Project file is too large');
       return;
     }

@@ -82,8 +82,8 @@ export function downloadBlob(blob: Blob, filename: string): void {
   document.body.appendChild(a);
   a.click();
   a.remove();
-  // Revoke on the next tick so the download has a chance to start.
-  setTimeout(() => URL.revokeObjectURL(url), 0);
+  // Revoke after a delay so the download has time to start on slow machines.
+  setTimeout(() => URL.revokeObjectURL(url), 10_000);
 }
 
 export function canvasToPngBlob(canvas: HTMLCanvasElement): Promise<Blob> {
