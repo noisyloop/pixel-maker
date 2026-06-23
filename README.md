@@ -4,13 +4,6 @@ A browser-based pixel art editor inspired by [Aseprite](https://www.aseprite.org
 Built with **React + Vite + TypeScript + Tailwind CSS**. No backend, no database —
 everything runs in your browser, and projects are saved as explicit files you download.
 
-## Screenshots
-
-> _Screenshots placeholder — drop images in `docs/` and link them here._
-
-![Editor overview](docs/screenshot-overview.png)
-![Layers & color tools](docs/screenshot-panels.png)
-
 ## Features
 
 ### Canvas
