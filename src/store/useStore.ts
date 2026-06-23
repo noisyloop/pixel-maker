@@ -437,7 +437,8 @@ export const useStore = create<Store>((set, get) => ({
     });
   },
   renameLayer: (id, name) => {
-    set({ layers: get().layers.map((l) => (l.id === id ? { ...l, name } : l)) });
+    const clamped = name.slice(0, 64);
+    set({ layers: get().layers.map((l) => (l.id === id ? { ...l, name: clamped } : l)) });
   },
   reorderLayer: (id, targetIndex) => {
     const state = get();
