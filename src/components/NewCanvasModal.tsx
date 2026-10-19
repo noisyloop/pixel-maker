@@ -48,7 +48,7 @@ export default function NewCanvasModal({ onClose }: Props) {
                 setWidth(p);
                 setHeight(p);
               }}
-              className={`rounded px-3 py-1.5 text-sm ${
+              className={`rounded-sm px-3 py-1.5 text-sm ${
                 width === p && height === p
                   ? 'bg-accent text-white'
                   : 'bg-panel-alt text-gray-200 hover:bg-edge'
@@ -68,7 +68,7 @@ export default function NewCanvasModal({ onClose }: Props) {
               max={MAX_DIM}
               value={width}
               onChange={(e) => setWidth(Number(e.target.value))}
-              className="rounded border border-edge bg-panel-alt px-2 py-1 text-sm text-gray-100 focus:border-accent focus:outline-none"
+              className="rounded-sm border border-edge bg-panel-alt px-2 py-1 text-sm text-gray-100 focus:border-accent focus:outline-hidden"
             />
           </label>
           <label className="flex flex-1 flex-col gap-1 text-[11px] text-gray-500">
@@ -79,7 +79,7 @@ export default function NewCanvasModal({ onClose }: Props) {
               max={MAX_DIM}
               value={height}
               onChange={(e) => setHeight(Number(e.target.value))}
-              className="rounded border border-edge bg-panel-alt px-2 py-1 text-sm text-gray-100 focus:border-accent focus:outline-none"
+              className="rounded-sm border border-edge bg-panel-alt px-2 py-1 text-sm text-gray-100 focus:border-accent focus:outline-hidden"
             />
           </label>
         </div>
@@ -91,13 +91,13 @@ export default function NewCanvasModal({ onClose }: Props) {
         <div className="flex justify-end gap-2">
           <button
             onClick={onClose}
-            className="rounded bg-panel-alt px-3 py-1.5 text-sm text-gray-200 hover:bg-edge"
+            className="rounded-sm bg-panel-alt px-3 py-1.5 text-sm text-gray-200 hover:bg-edge"
           >
             Cancel
           </button>
           <button
             onClick={apply}
-            className="rounded bg-accent px-3 py-1.5 text-sm text-white hover:bg-accent-hover"
+            className="rounded-sm bg-accent px-3 py-1.5 text-sm text-white hover:bg-accent-hover"
           >
             Create
           </button>

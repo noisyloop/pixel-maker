@@ -84,7 +84,7 @@ export default function LayersPanel() {
                       if (e.key === 'Enter') (e.target as HTMLInputElement).blur();
                     }}
                     onClick={(e) => e.stopPropagation()}
-                    className="rounded border border-edge bg-panel-alt px-1 text-xs text-gray-100 focus:outline-none"
+                    className="rounded-sm border border-edge bg-panel-alt px-1 text-xs text-gray-100 focus:outline-hidden"
                   />
                 ) : (
                   <span
@@ -133,7 +133,7 @@ function IconBtn({
     <button
       title={title}
       onClick={onClick}
-      className="flex h-6 w-6 items-center justify-center rounded bg-panel-alt text-xs text-gray-200 hover:bg-edge"
+      className="flex h-6 w-6 items-center justify-center rounded-sm bg-panel-alt text-xs text-gray-200 hover:bg-edge"
     >
       {children}
     </button>

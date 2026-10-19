@@ -45,13 +45,13 @@ export default function ImportModal() {
       <div className="flex justify-end gap-2">
         <button
           onClick={cancelImport}
-          className="rounded bg-panel-alt px-3 py-1.5 text-sm text-gray-200 hover:bg-edge"
+          className="rounded-sm bg-panel-alt px-3 py-1.5 text-sm text-gray-200 hover:bg-edge"
         >
           Cancel
         </button>
         <button
           onClick={confirmImport}
-          className="rounded bg-accent px-3 py-1.5 text-sm text-white hover:bg-accent-hover"
+          className="rounded-sm bg-accent px-3 py-1.5 text-sm text-white hover:bg-accent-hover"
         >
           Confirm
         </button>

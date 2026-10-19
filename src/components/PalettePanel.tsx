@@ -14,7 +14,7 @@ export default function PalettePanel() {
         <button
           title="Add current color"
           onClick={() => addPaletteColor(foreground)}
-          className="rounded bg-panel-alt px-2 text-xs text-gray-200 hover:bg-edge"
+          className="rounded-sm bg-panel-alt px-2 text-xs text-gray-200 hover:bg-edge"
         >
           + add
         </button>
@@ -29,7 +29,7 @@ export default function PalettePanel() {
               e.preventDefault();
               removePaletteColor(i);
             }}
-            className={`aspect-square rounded border ${
+            className={`aspect-square rounded-sm border ${
               foreground.toLowerCase() === color.toLowerCase()
                 ? 'border-white'
                 : 'border-edge'

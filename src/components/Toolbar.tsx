@@ -40,7 +40,7 @@ export default function Toolbar() {
           key={t.id}
           title={`${t.label} (${t.key})`}
           onClick={() => setTool(t.id)}
-          className={`flex h-10 w-10 items-center justify-center rounded transition-colors ${
+          className={`flex h-10 w-10 items-center justify-center rounded-sm transition-colors ${
             tool === t.id
               ? 'bg-accent text-white'
               : 'text-gray-300 hover:bg-panel-alt hover:text-white'
@@ -58,7 +58,7 @@ export default function Toolbar() {
             onClick={() =>
               tool === 'rect' ? setRectFilled(!rectFilled) : setEllipseFilled(!ellipseFilled)
             }
-            className="h-8 w-10 rounded bg-panel-alt text-[10px] text-gray-200 hover:bg-edge"
+            className="h-8 w-10 rounded-sm bg-panel-alt text-[10px] text-gray-200 hover:bg-edge"
           >
             {(tool === 'rect' ? rectFilled : ellipseFilled) ? 'Fill' : 'Line'}
           </button>
