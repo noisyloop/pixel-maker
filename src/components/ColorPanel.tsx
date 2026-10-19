@@ -34,7 +34,7 @@ export default function ColorPanel() {
     <div className="flex flex-col gap-3 border-t border-edge bg-panel p-3">
       <div className="flex items-center gap-3">
         <div
-          className="h-12 w-12 shrink-0 rounded border border-edge"
+          className="h-12 w-12 shrink-0 rounded-sm border border-edge"
           style={{ backgroundColor: foreground }}
           title="Foreground color"
         />
@@ -49,12 +49,12 @@ export default function ColorPanel() {
                 if (e.key === 'Enter') commitHex((e.target as HTMLInputElement).value);
               }}
               spellCheck={false}
-              className="w-full rounded border border-edge bg-panel-alt px-2 py-1 text-sm text-gray-100 focus:border-accent focus:outline-none"
+              className="w-full rounded-sm border border-edge bg-panel-alt px-2 py-1 text-sm text-gray-100 focus:border-accent focus:outline-hidden"
             />
             <button
               title="Add to palette"
               onClick={() => addPaletteColor(foreground)}
-              className="rounded bg-panel-alt px-2 text-sm text-gray-200 hover:bg-edge"
+              className="rounded-sm bg-panel-alt px-2 text-sm text-gray-200 hover:bg-edge"
             >
               +
             </button>

@@ -16,7 +16,7 @@ export default function Toasts() {
         <div
           key={t.id}
           onClick={() => dismiss(t.id)}
-          className={`pointer-events-auto cursor-pointer rounded border-l-4 px-4 py-2 text-sm text-gray-100 shadow-lg ${
+          className={`pointer-events-auto cursor-pointer rounded-sm border-l-4 px-4 py-2 text-sm text-gray-100 shadow-lg ${
             STYLES[t.kind] ?? STYLES.info
           }`}
         >

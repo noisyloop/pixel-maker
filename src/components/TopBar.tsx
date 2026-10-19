@@ -221,7 +221,7 @@ function Btn({
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`rounded px-2.5 py-1 text-xs transition-colors disabled:cursor-not-allowed disabled:opacity-40 ${
+      className={`rounded-sm px-2.5 py-1 text-xs transition-colors disabled:cursor-not-allowed disabled:opacity-40 ${
         active
           ? 'bg-accent text-white'
           : 'text-gray-300 hover:bg-panel-alt hover:text-white'
